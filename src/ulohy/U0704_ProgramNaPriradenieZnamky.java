@@ -35,15 +35,17 @@ public class U0704_ProgramNaPriradenieZnamky {
                 sum += percenta;
                 pocet++;                            // Obsah premennej pocet zvysime o 1
             }
+            // && pouzijeme pri podminekach, ktore musia platit zaroven (AND)
+            // || pouzijeme pri podmienkach, pri ktorych staci, ked plati jedna z nich (OR) - Pipe vo Win je Alt Gr + Q
             if (percenta > 90) {
                 System.out.println("Tvoja známka je A");
-            } else if (percenta > 75) {
+            } else if (percenta >= 75 && percenta < 90) {
                 System.out.println("Tvoja známka je B");
-            } else if (percenta > 65) {
+            } else if (percenta >= 65 && percenta < 75) {
                 System.out.println("Tvoja známka je C");
   /*          } else if (percenta < 0) {
                // break;          //Stopneme nekonečný vyklus, pokial while(true)*/       //tento riadok v pripade cez true
-            } else if (percenta >= 0)
+            } else if (percenta >= 0 && percenta < 65)
                 System.out.println("Neuspel");
             else
                 System.out.println("Neočakávaná vstupná hodnota");
