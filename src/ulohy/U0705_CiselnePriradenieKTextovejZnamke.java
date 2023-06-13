@@ -23,7 +23,8 @@ public class U0705_CiselnePriradenieKTextovejZnamke {
         System.out.println("Zadaj textovú znnámku (výborný, chválitebný, dobrý, dostatočný, nedostatočný): ");
         String vstupnaHodnota = sc.nextLine(); // Priamy použivateľský vstup, vidieť v konzole
 
-        String vstupnaTextovaZnamka = stripAccents(vstupnaHodnota).toLowerCase(); //odstránenie diakritiky a konverzia textu na male písmená
+        String vstupnaTextovaZnamka = stripAccents(vstupnaHodnota).toLowerCase().trim(); //odstránenie diakritiky a konverzia textu na male písmená , .trim zároveň rieši a  odstraňuje medzeru
+
 
 
         switch (vstupnaTextovaZnamka) {
