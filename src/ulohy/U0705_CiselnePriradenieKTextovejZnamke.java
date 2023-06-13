@@ -25,6 +25,8 @@ public class U0705_CiselnePriradenieKTextovejZnamke {
 
         String vstupnaTextovaZnamka = stripAccents(vstupnaHodnota).toLowerCase().trim(); //odstránenie diakritiky a konverzia textu na male písmená , .trim zároveň rieši a  odstraňuje medzeru
 
+        if (!vstupnaTextovaZnamka.equals("vyborny"))        // Ukážka negácie equals, výkričník sa používa na začiatku premennej
+            System.out.println("Nezadal si známku výborný");
 
 
         switch (vstupnaTextovaZnamka) {

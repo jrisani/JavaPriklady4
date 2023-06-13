@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Varpriklad {
+public class VarPriklad {
     public static void main(String[] args) {
 
         var cislo = 10;         // Toto môže spôsobiť "nečitateľnosť" kodu
