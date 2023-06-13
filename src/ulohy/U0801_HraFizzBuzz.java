@@ -24,7 +24,7 @@ public class U0801_HraFizzBuzz {
 
         for (int cislo = 1; cislo <= /*vstup*/MAX; cislo++) {
             if (cislo % 15 == 0 ) {
-                System.out.print(" FizzBuzz,");
+                System.out.print(" FizzBuzz,\n");
             } else if (cislo % 3 == 0) {
                 System.out.print(" Fizz,");
             } else if (cislo % 5 == 0) {
