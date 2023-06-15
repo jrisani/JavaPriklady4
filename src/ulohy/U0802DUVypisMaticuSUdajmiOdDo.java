@@ -1,5 +1,20 @@
 package ulohy;
+/*
+Úloha na opakovanie: Vypíš maticu s údajmi od 1 do 25
+Vytvorte (vypíšte) maticu údajov do konzoly, ktoré budú vyzerať nasledovne:
+1 2 3 4 5
+6 7 8 9 10
+11 12 13 14 15
+16 17 18 19 20
+21 22 23 24 25
 
+Bonusová úloha: Vytvorte obdobnú maticu, ktorá bude obsahovať 2-násobok tej predchádzajúcej hodnoty (začneme 1), takže bude to vyzerať nasledujúco:
+
+1 2 4 8 16
+32 64 128 256 512
+1024 2048 4096 8192 16384
+atď.
+ */
 public class U0802DUVypisMaticuSUdajmiOdDo {
     public static void main(String[] args) {
 

@@ -1,4 +1,5 @@
 package sk.tmconsulting.pozdravy;
+
 import sk.tmconsulting.pozdravy.anglicky.Hello;
 import sk.tmconsulting.pozdravy.nemecky.Hallo;
 import sk.tmconsulting.pozdravy.madarsky.Szia;
