@@ -20,9 +20,9 @@ public class U0802DUVypisMaticuSUdajmiOdDo {
 
         for (int cislo = 1; cislo <= 25; cislo++) {
             if (cislo % 5 == 0 ) {
-                System.out.print("" +cislo+ ",\n");
+                System.out.print(" " +cislo+ "\n");
             } else {
-                System.out.print("" +cislo+",");
+                System.out.print(" " +cislo+"");
             }
         }
 
@@ -30,11 +30,11 @@ public class U0802DUVypisMaticuSUdajmiOdDo {
             if (cislo % 5 == 0 ) {
                 System.out.print("" +cislo+ " \n");
             } else {
-                System.out.print("" +cislo+" ");
+                System.out.print("" +cislo+"\t");
             }
         }
 
-        // podľa ChatGPT :)
+     /*   // podľa ChatGPT :)
         int rows = 5;
         int columns = 5;
         int counter = 1;
@@ -75,6 +75,6 @@ public class U0802DUVypisMaticuSUdajmiOdDo {
                 }
                 System.out.println();
             }
-
+*/
     }
 }

@@ -65,17 +65,26 @@ public class U0901_Polia_ZakladneExcelFunkcie {
             System.out.println(cisla[i]);
         }
     }
-
+    public static void vypisklon(double[] cislakopia) {     //Vypis klonu pola, aby ostalo zachované pôvodné poradie
+        for (int i = 0; i < cislakopia.length; i++) {
+            System.out.println(cislakopia[i]);
+        }
+    }
     public static void main(String[] args) {
-        double[] cisla = {1, 2.5, 4, 8.5, 10}; // Vytvorili sme pole s desatinnymi cislami
+        double [] cisla = {1, 2.5, 40, 8.5, 10}; // Vytvorili sme pole s desatinnymi cislami
+        double [] cislakopia = cisla.clone();    //Vytvorenie klonu pola, aby sme v buducnosti mali zachované pôvodné poradie poľa
 
         vypisPole(cisla);
         vypisPoleCezForEach(cisla);
+
 
         System.out.println("Výsledok scítania pola cisel je: " + scitaj(cisla));
         System.out.println("Priemer pola cisel je: " + priemer(cisla));
         System.out.println("Počet čísel v poli je: " + pocet(cisla));
         System.out.println("Najväčšie číslo v poli je: " + max(cisla));
         System.out.println("Najmenšie číslo v poli je: " + min(cisla));
+        vypisPole(cisla);
+        vypisklon(cislakopia);
     }
+
 }
