@@ -39,7 +39,27 @@ public class U0802DUVypisMaticuSUdajmiOdDo {
             }
             System.out.println();
         }
+            //Bonus
+            int rowsb = 5;
+            int columnsb = 5;
+            int value = 1;
 
+            int[][] matrixb = new int[rowsb][columnsb];
+
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < columnsb; j++) {
+                    matrixb[i][j] = value;
+                    value *= 2;
+                }
+            }
+
+            // Výpis matice
+            for (int i = 0; i < rowsb; i++) {
+                for (int j = 0; j < columnsb; j++) {
+                    System.out.print(matrixb[i][j] + " ");
+                }
+                System.out.println();
+            }
 
     }
 }
