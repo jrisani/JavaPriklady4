@@ -37,7 +37,9 @@ public class U0704_ProgramNaPriradenieZnamky {
             }
             // && pouzijeme pri podminekach, ktore musia platit zaroven (AND)
             // || pouzijeme pri podmienkach, pri ktorych staci, ked plati jedna z nich (OR) - Pipe vo Win je Alt Gr + Q
-            if (percenta > 90) {
+            // TODO Vytvorit metodu s nazvom hodnot, ktora vrati zodpovedajucu znamku na zaklade vstupnej hodnoty
+            // TODO Otestovat metodu `hodnot` prostrednictvom jUnit testov, pripravit testovacie scenare
+            if (percenta >= 90) {
                 System.out.println("Tvoja známka je A");
             } else if (percenta >= 75 && percenta < 90) {
                 System.out.println("Tvoja známka je B");
