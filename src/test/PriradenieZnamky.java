@@ -1,26 +1,43 @@
 package test;
 
+import java.util.Scanner;
+
 public class PriradenieZnamky {
-    public static void hodnot(int percenta) {
+    public static String hodnot (int percenta) {
+        String slovnaZnamka = "";
         if (percenta >= 90) {
-            System.out.println("Tvoja známka je A");
+            slovnaZnamka = "A";
         } else if (percenta >= 75 && percenta < 90) {
-            System.out.println("Tvoja známka je B");
+            slovnaZnamka = "B";
         } else if (percenta >= 65 && percenta < 75) {
-            System.out.println("Tvoja známka je C");
-  /*          } else if (percenta < 0) {
-               // break;          //Stopneme nekonečný vyklus, pokial while(true)*/       //tento riadok v pripade cez true
-        } else if (percenta >= 0 && percenta < 65)
-            System.out.println("Neuspel");
-        else
-            System.out.println("Neočakávaná vstupná hodnota");
+            slovnaZnamka = "C";
+        } else if (percenta >= 0 && percenta < 65) {
+            slovnaZnamka = "Fx";
+        } else
+            slovnaZnamka = "Neočakávaná vstupná hodnota";
+        return slovnaZnamka;
+
     }
-    }
+
 
     public static void main(String[] args) {
-        double a = 2.5; // Strana a
-        double b = 3.5; // Strana b
+        int percenta = 0;
+        int sum = 0;
+        int pocet = 0;
 
-        System.out.println("Obvod obdĺžnika je: " + Obdlznik.vypocitajObvod(a, b));
-        System.out.println("Obsah obdĺžnika je: " + Obdlznik.vypocitajObsah(a, b));
+        Scanner sc = new Scanner(System.in);
+
+        while (percenta >=0){
+            System.out.println("Zadaj percentá: ");
+            percenta = sc.nextInt();
+
+            if (percenta >= 0) {
+                sum += percenta;
+                pocet++;
+            }
+            hodnot(percenta);
+        }
+            System.out.println("Priemer známok je: " + (sum / pocet ));
+            System.out.println("Koniec programu");
+}
 }
