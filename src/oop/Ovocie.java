@@ -10,6 +10,7 @@ public class Ovocie {
 
     public String akeOvocie() {
         return nazov;
+        // return this.getClass();
     }
 
 }

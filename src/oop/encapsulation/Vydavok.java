@@ -4,6 +4,7 @@ public class Vydavok {
     private String nazov;
     private String kategoria;
     private double cena;
+    public static final double DPH = 0.20;
 
     public String getNazov() {
         return nazov;
