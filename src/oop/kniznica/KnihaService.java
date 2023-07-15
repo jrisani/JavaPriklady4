@@ -31,6 +31,24 @@ public class KnihaService {
 
     }
 
+    public void hladajKnihyPodlaNazvu() {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Zadaj názov knihy:");
+        String hladanyNazov = scn.nextLine();
+        ArrayList<Kniha> najdeneKnihy = new ArrayList<>(); // Prazdny zoznam najdenych knih
+        for(Kniha konkretnaKniha: zoznamKnih) { // foreach pre prechadzanie kazdej knihy v nasom zozname knih
+            // Obsahuje nazov konkretnej knihy aspon cast nazvu knihy, ktory hladame?
+            if (konkretnaKniha.getNazov().contains(hladanyNazov)) {
+                najdeneKnihy.add(konkretnaKniha); // Ak taku knihu najde, tak ju ulozi do zoznamu najdeneKnihy
+                }
+        }
+        // Vypiseme najdene knihy
+        System.out.println("\nNájdené knihy sú tieto:");
+        for(Kniha najdenaKniha:najdeneKnihy) {
+            System.out.println(najdenaKniha);
+        }
+    }
+
     // Metoda ulozDoSuboru vyzve pouzivatela na zadanie nazvu suboru a nasledne ho ulozi
     public void ulozDoSuboru() {
         Scanner scn = new Scanner(System.in);
@@ -98,11 +116,15 @@ public class KnihaService {
 /*        for (Kniha konkretnaKniha:zoznamKnih) {
             System.out.println(konkretnaKniha);
         }*/
+        if (!zoznamKnih.isEmpty()) {
+            for (int i = 0; i < zoznamKnih.size(); i++) {
+                System.out.print("Index knihy: " + i);
+                System.out.print("\t");   //Pouzijem este tabulator
+                System.out.println(zoznamKnih.get(i));  //Detail knihy, ktory riesi metoda toString v Kniha.java
+            }
+        } else {
+            System.out.println("Zoznam knih je prázdny!");
 
-        for (int i = 0; i < zoznamKnih.size() ; i++) {
-            System.out.print("Index knihy: " + i);
-            System.out.print("\t");   //Pouzijem este tabulator
-            System.out.println(zoznamKnih.get(i));  //Detail knihy, ktory riesi metoda toString v Kniha.java
         }
     }
 
@@ -161,7 +183,6 @@ public class KnihaService {
                     Kniha najdenaKniha = najdiKnihu();
                     System.out.println("Detaily o nájdenej knihe: " + najdenaKniha);
                 }
-
                 case "4" -> {
                     System.out.println("Vybral si číslo 4");
                     odstranKnihu();
@@ -170,6 +191,9 @@ public class KnihaService {
                 case "5" -> {
                     System.out.println("Vybral si číslo 5");
                     System.out.println("Počet všetkých kníh v zozname: " + pocetKnih());
+                }
+                case "6" -> {
+                    hladajKnihyPodlaNazvu();
                 }
                 case "7" -> {
                     nacitajZoSuboru();
