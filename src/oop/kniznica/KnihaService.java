@@ -1,9 +1,17 @@
 package oop.kniznica;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class KnihaService {
+    ArrayList<Kniha> zoznamKnih; // My sme vytvorili objekt, resp. ArrayList ako prazdne
+
+    // Bezparametricky konstruktor
+    public KnihaService() {
+        //zoznamKnih = naplnKniznicuKnihami();
+        zoznamKnih = new ArrayList<Kniha>(); //Vytvorenie prazdneho zoznamu knih
+    }
 
     public void zobrazMenu() {
         System.out.println("""
@@ -14,13 +22,58 @@ public class KnihaService {
                 (3) Zobraz konkrétnu knihu (podľa indexu)
                 (4) Vymaž konkrétnu knihu (podľa indexu)
                 (5) Zobraz počet všetkých kníh
+                (6) Vyhľadaj knihu podľa názvu
+                (7) Načítaj zoznam kníh zo súboru (zadaj názov súboru)
+                (8) Ulož zoznam kníh do súboru (zadaj názov súboru)
                 (9) Vymaž všetky knihy
                 Koniec = skončí zadávanie novej knihy
                 """);
 
     }
 
-    public void pridajKnihu(ArrayList<Kniha> zoznamKnih) {
+    // Metoda ulozDoSuboru vyzve pouzivatela na zadanie nazvu suboru a nasledne ho ulozi
+    public void ulozDoSuboru() {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Zadaj názov súboru:");
+        String nazovSuboru = scn.nextLine();
+
+        try {
+        FileOutputStream fileOutputStream = new FileOutputStream(nazovSuboru); // vytvorime subor s nazvom kniha.ser
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream); // vytvorime Object stream pre ukladanie objektov
+        objectOutputStream.writeObject(zoznamKnih); // zapiseme objekt
+        objectOutputStream.flush(); // realne uskutocnime operaciu zapisu
+        objectOutputStream.close(); // zatvorime object output stream
+        fileOutputStream.close(); // zatvorime file output stream, cize subor*/
+            System.out.println("Súbor je uložený!");
+        } catch (IOException e) {
+            System.out.println("Nepodarilo sa vytvoriť súbor, resp. ho uložiť!");
+            e.printStackTrace();
+        }
+    }
+
+    // Metoda nacitajZoSuboru vyzve pouzivatela na zadanie nazvu suboru a nasledne ho otvori
+    public void nacitajZoSuboru() {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Zadaj názov súboru:");
+        String nazovSuboru = scn.nextLine();
+
+        try {
+            FileInputStream fileInputStream = new FileInputStream(nazovSuboru);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            zoznamKnih = (ArrayList) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream.close();
+            System.out.println("Súbor je načítaný.");
+        } catch (IOException e) {
+            System.out.println("Nepodarilo sa otvoriť súbor");
+            //e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Súbor sa podarilo načítať, ale nie je kompatibilný z ArrayList!");
+            //e.printStackTrace();
+        }
+    }
+
+    public void pridajKnihu() {
         // Pouzivatelsky vstup na zadanie udajov knihy
         Scanner scn = new Scanner(System.in);  //Inicializacia konzoly
         System.out.println("Zadaj názov knihy:");
@@ -40,7 +93,7 @@ public class KnihaService {
     }
 
 
-    public void vypisVsetkyKnihy(ArrayList<Kniha> zoznamKnih) {
+    public void vypisVsetkyKnihy() {
 
 /*        for (Kniha konkretnaKniha:zoznamKnih) {
             System.out.println(konkretnaKniha);
@@ -53,7 +106,7 @@ public class KnihaService {
         }
     }
 
-    public void odstranKnihu(ArrayList<Kniha> zoznamKnih) {
+    public void odstranKnihu() {
         Scanner scn = new Scanner(System.in);
         System.out.println("Zadaj index knihy, ktorú chceš odstrániť?");
         int indexKnihy = scn.nextInt();
@@ -63,14 +116,14 @@ public class KnihaService {
         }
     }
 
-    public Kniha najdiKnihu(ArrayList<Kniha> zoznamKnih) {
+    public Kniha najdiKnihu() {
     Scanner scn = new Scanner(System.in);
         System.out.println("Zadaj index knihy, ktorú chceš zobraziť");
         int indexKnihy = scn.nextInt();
         return zoznamKnih.get(indexKnihy);
     }
 
-    public int pocetKnih(ArrayList<Kniha> zoznamKnih) {
+    public int pocetKnih() {
         return zoznamKnih.size(); // Vrati pocet vsetkych knih, resp. poloziek z ArrayList-u}
     }
 
@@ -82,7 +135,7 @@ public class KnihaService {
         else return false;
     }
 
-    public void volbaPouzivatela(ArrayList<Kniha> zoznamKnih) {
+    public void startMenu() {
         String vybrataMenuPolozka = "";
         // Opakujeme volbu pouzivatela
         while (!vybrataMenuPolozka.equals("koniec")) { // Nekonecny cyklus
@@ -97,26 +150,32 @@ public class KnihaService {
             switch (vybrataMenuPolozka.toLowerCase()) {  // "Prekonvertovali" sme String, cize text na male pismena
                 case "1" -> {
                     System.out.println("Vybral si číslo 1");
-                    pridajKnihu(zoznamKnih);
+                    pridajKnihu();
                 }
                 case "2" -> {
                     System.out.println("Vybral si číslo 2");
-                    vypisVsetkyKnihy(zoznamKnih);
+                    vypisVsetkyKnihy();
                 }
                 case "3" -> {
                     System.out.println("Vybral si číslo 3");
-                    Kniha najdenaKniha = najdiKnihu(zoznamKnih);
+                    Kniha najdenaKniha = najdiKnihu();
                     System.out.println("Detaily o nájdenej knihe: " + najdenaKniha);
                 }
 
                 case "4" -> {
                     System.out.println("Vybral si číslo 4");
-                    odstranKnihu(zoznamKnih);
+                    odstranKnihu();
                     // Tu bude pouzivatelsky vstup na zadanie indexu knihy, ktoru ideme zmazat// Ked zadame index knihy, tak pred samotnym mazanim sa vykona metoda potvrdVolbu(scn), vid nizsie}
                 }
                 case "5" -> {
                     System.out.println("Vybral si číslo 5");
-                    System.out.println("Počet všetkých kníh v zozname: " + pocetKnih(zoznamKnih));
+                    System.out.println("Počet všetkých kníh v zozname: " + pocetKnih());
+                }
+                case "7" -> {
+                    nacitajZoSuboru();
+                }
+                case "8" -> {
+                    ulozDoSuboru();
                 }
                 case "koniec" -> {
                     System.out.println("Vybral si koniec");
